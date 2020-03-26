@@ -1,7 +1,7 @@
 ﻿@model CaseManagement.Models.Case
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Case";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -50,15 +50,16 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Submit" class="btn btn-default" />
+                <input type="button" value="Exit" class="btn btn-default" onclick="location.href='@Html.ActionLink("Index","Case")'" />
             </div>
         </div>
     </div>
 }
 
-<div>
+@*<div>
     @Html.ActionLink("Back to List", "Index")
-</div>
+</div>*@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

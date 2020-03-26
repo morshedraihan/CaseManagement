@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using CaseManagement.DataAccess;
 using CaseManagement.Models;
-using CaseManagement.Service;
+using CaseManagement.Services;
 
 namespace CaseManagement.Controllers
 {

@@ -58,6 +58,7 @@ namespace CaseManagement.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
+            ViewBag.ReturnUrl = "/Case/Index";
             return View();
         }
 

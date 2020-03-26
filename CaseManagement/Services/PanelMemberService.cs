@@ -6,7 +6,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
-namespace CaseManagement.Service
+namespace CaseManagement.Services
 {
     public class PanelMemberService
     {
