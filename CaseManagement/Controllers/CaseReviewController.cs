@@ -8,18 +8,21 @@ using System.Web;
 using System.Web.Mvc;
 using CaseManagement.DataAccess;
 using CaseManagement.Models;
+using CaseManagement.Services;
+using CaseManagement.ViewModels;
 
 namespace CaseManagement.Controllers
 {
     [Authorize]
     public class CaseReviewController : Controller
     {
-        private CaseContext db = new CaseContext();
+        //private CaseContext db = new CaseContext();
+        private CaseReviewService caseReviewService = new CaseReviewService();
 
         // GET: CaseReviews
         public ActionResult Index()
         {
-            return View(db.CaseReviews.ToList());
+            return View(caseReviewService.GetAll());
         }
 
         // GET: CaseReviews/Details/5
@@ -29,7 +32,7 @@ namespace CaseManagement.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CaseReview caseReview = db.CaseReviews.Find(id);
+            CaseReview caseReview = caseReviewService.GetById(id);
             if (caseReview == null)
             {
                 return HttpNotFound();
@@ -38,27 +41,43 @@ namespace CaseManagement.Controllers
         }
 
         // GET: CaseReviews/Create
+        //public ActionResult Create()
+        //{
+        //    return View();
+        //}
         public ActionResult Create()
         {
-            return View();
+            return View(caseReviewService.GetAllCaseReviewPanels());
         }
+
 
         // POST: CaseReviews/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,CaseId,ReviewDetails,CreatedBy,CreatedOn")] CaseReview caseReview)
+        public ActionResult Create(CaseReviewPanelViewModel test)
         {
             if (ModelState.IsValid)
             {
-                db.CaseReviews.Add(caseReview);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                //caseReviewService.AddCaseReview(caseReview);
+                var abc = test.CasePanelMembers;
+                //return RedirectToAction("Index");
             }
 
-            return View(caseReview);
+            return RedirectToAction("Index");
         }
+
+        //public ActionResult Create([Bind(Include = "Id,CaseId,ReviewDetails,CreatedBy,CreatedOn")] CaseReview caseReview)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        caseReviewService.AddCaseReview(caseReview);
+        //        return RedirectToAction("Index");
+        //    }
+
+        //    return View(caseReview);
+        //}
 
         // GET: CaseReviews/Edit/5
         public ActionResult Edit(int? id)
@@ -67,7 +86,7 @@ namespace CaseManagement.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CaseReview caseReview = db.CaseReviews.Find(id);
+            CaseReview caseReview = caseReviewService.GetById(id);
             if (caseReview == null)
             {
                 return HttpNotFound();
@@ -84,8 +103,7 @@ namespace CaseManagement.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(caseReview).State = EntityState.Modified;
-                db.SaveChanges();
+                caseReviewService.UpdateCaseReview(caseReview);
                 return RedirectToAction("Index");
             }
             return View(caseReview);
@@ -98,7 +116,7 @@ namespace CaseManagement.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CaseReview caseReview = db.CaseReviews.Find(id);
+            CaseReview caseReview = caseReviewService.GetById(id);
             if (caseReview == null)
             {
                 return HttpNotFound();
@@ -111,19 +129,8 @@ namespace CaseManagement.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            CaseReview caseReview = db.CaseReviews.Find(id);
-            db.CaseReviews.Remove(caseReview);
-            db.SaveChanges();
+            caseReviewService.DeleteCaseReview(id);
             return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }

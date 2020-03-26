@@ -19,6 +19,19 @@
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
-textarea {
-    max-width: 280px;
+textarea, 
+label {
+    max-width: 280px !important;
+}
+
+ul{
+    list-style-type:none !important;
+}
+
+label.form-control{
+    background-color:#edf9f4;
+}
+
+.control-group{
+    border: 1px solid black;
 }

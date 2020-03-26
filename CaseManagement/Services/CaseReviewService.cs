@@ -3,6 +3,7 @@ using CaseManagement.Models;
 using CaseManagement.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -28,7 +29,7 @@ namespace CaseManagement.Services
                     CaseTitle = currentCase.Title,
                     ReviewDetails = db.CaseReviews
                                       .Where(rev => rev.CaseId == currentCase.Id)
-                                      .FirstOrDefault<CaseReview>().ReviewDetails
+                                      .FirstOrDefault<CaseReview>()?.ReviewDetails
                 };
                 var allPanelMembersViewModel = new List<PanelMemberViewModel>();
                 foreach (var currentPanelMember in allPanelMembers)
@@ -49,6 +50,30 @@ namespace CaseManagement.Services
                 caseReviewPanels.CasePanelMembers.Add(casePanelMemberViewModel);
             }
             return caseReviewPanels;
+        }
+        public List<CaseReview> GetAll()
+        {
+            return db.CaseReviews.ToList();
+        }
+        public CaseReview GetById(int? id)
+        {
+            return db.CaseReviews.Find(id);
+        }
+        public void AddCaseReview(CaseReview caseReview)
+        {
+            db.CaseReviews.Add(caseReview);
+            db.SaveChanges();
+        }
+        public void UpdateCaseReview(CaseReview caseReview)
+        {
+            db.Entry(caseReview).State = EntityState.Modified;
+            db.SaveChanges();
+        }
+        public void DeleteCaseReview(int id)
+        {
+            CaseReview caseReview = db.CaseReviews.Find(id);
+            db.CaseReviews.Remove(caseReview);
+            db.SaveChanges();
         }
     }
 }

@@ -98,8 +98,8 @@ C:\MegaCloud\Hire\undp\Assignment\CaseManagement\CaseManagement\bin\Microsoft.Ow
 C:\MegaCloud\Hire\undp\Assignment\CaseManagement\CaseManagement\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\MegaCloud\Hire\undp\Assignment\CaseManagement\CaseManagement\bin\Microsoft.Owin.Security.OAuth.xml
 C:\MegaCloud\Hire\undp\Assignment\CaseManagement\CaseManagement\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\MegaCloud\Hire\undp\Assignment\CaseManagement\CaseManagement\obj\Debug\CaseManagement.csprojAssemblyReference.cache
 C:\MegaCloud\Hire\undp\Assignment\CaseManagement\CaseManagement\obj\Debug\CaseManagement.csproj.CoreCompileInputs.cache
 C:\MegaCloud\Hire\undp\Assignment\CaseManagement\CaseManagement\obj\Debug\CaseManagement.csproj.CopyComplete
 C:\MegaCloud\Hire\undp\Assignment\CaseManagement\CaseManagement\obj\Debug\CaseManagement.dll
 C:\MegaCloud\Hire\undp\Assignment\CaseManagement\CaseManagement\obj\Debug\CaseManagement.pdb
+C:\MegaCloud\Hire\undp\Assignment\CaseManagement\CaseManagement\obj\Debug\CaseManagement.csprojAssemblyReference.cache

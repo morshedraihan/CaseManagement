@@ -265,6 +265,7 @@
     <Content Include="Views\CaseReview\Details.cshtml" />
     <Content Include="Views\CaseReview\Edit.cshtml" />
     <Content Include="Views\CaseReview\Index.cshtml" />
+    <Content Include="Views\CaseReview\Create - Copy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
